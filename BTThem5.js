@@ -1,3 +1,4 @@
+// Function handle data
 function check_tax (tnct) {
     if ( tnct <= 60000000 ) {
         ts = 5;
@@ -19,6 +20,7 @@ function check_tax (tnct) {
 
 var tax = document.getElementById('tax');
 tax.onclick = function() {
+    // Get data
     var name = document.getElementById('name').ariaValueMax;
     var income = document.getElementById('income').value*1;
     var related = document.getElementById('related').value*1;
@@ -27,12 +29,14 @@ tax.onclick = function() {
 
     tnct = income - 4000000 - related * 1600000;
 
+    // Call function
     var ts = check_tax(tnct)
 
+    // Calculate
     ttncn = tnct * ts / 100;
-
+    // Format VND currency
     var currentFormat = new Intl.NumberFormat("VN-vn");
-
+    // Print out
     document.getElementById('result1').innerHTML = 'Ho Ten: ' + name + '. Thue thu nhap ca nhan: ' + currentFormat.format(ttncn) + ' VND'
 }
 
